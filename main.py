@@ -40,7 +40,7 @@ sheet = client.open(SHEET_NAME).sheet1
 
 # --- GEMINI SETUP ---
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash-latest')
+model = genai.GenerativeModel('gemini-1.5-flash-001')
 
 async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.message.from_user
