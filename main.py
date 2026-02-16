@@ -60,12 +60,12 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
             b64_audio = base64.b64encode(f.read()).decode('utf-8')
 
         # --- ATTEMPT 1: FLASH ---
-        response = ask_gemini(b64_audio, "gemini-1.5-flash")
+        response = ask_gemini(b64_audio, "gemini-2.0-flash")
         
         # --- ATTEMPT 2: PRO (Fallback) ---
         if response.status_code != 200:
-            await update.message.reply_text("Flash model failed, trying Pro model...")
-            response = ask_gemini(b64_audio, "gemini-1.5-pro")
+            await update.message.reply_text("2.0 model failed, trying 2.5...")
+            response = ask_gemini(b64_audio, "gemini-2.5-flash")
 
         # --- FINAL CHECK ---
         if response.status_code != 200:
